@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #555;
+            color: #fff;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .section h2 {
+            margin-bottom: 10px;
+        }
+        .section p {
+            margin-bottom: 15px;
+        }
+        .media {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .media-item {
+            flex: 1 1 calc(50% - 20px);
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+        .media-item img,
+        .media-item iframe {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+        <p>Welcome to my portfolio! Here you’ll find some of my favorite projects and media showcases.</p>
+    </header>
+    <div class="container">
+        <section class="section">
+            <h2>About Me</h2>
+            <p>Hello! I'm a student from CUC with a passion for storytelling, design, and media. I specialize in crafting compelling narratives through various forms of digital content. Besides, my major is data journalism!</p>
+        </section>
+
+        <section class="section">
+            <h2>Projects</h2>
+            <div class="media">
+                <!-- Image with description -->
+                <div class="media-item">
+                    <img src="https://via.placeholder.com/400" alt="Sample Project Image">
+                    <p>This is my photography work.</p>
+                </div>
+                <!-- Video with description -->
+                <div class="media-item">
+                    <iframe 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                    <p>This video highlights my ability to create dynamic, engaging media content that resonates with diverse audiences.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
