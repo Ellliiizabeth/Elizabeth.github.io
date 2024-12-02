@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            width: 70%;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .option {
+            background-color: #efefef;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .option:hover {
+            background-color: #ddd;
+        }
+
+        .result {
+            display: none;
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>MBTI性格测试</h1>
+        <div id="question1" class="question">
+            <p>你更喜欢： </p>
+            <div class="options">
+                <div class="option" onclick="answer('E', 1)">与人交往</div>
+                <div class="option" onclick="answer('I', 1)">独自思考</div>
+            </div>
+        </div>
+
+        <div id="question2" class="question" style="display:none;">
+            <p>你更喜欢：</p>
+            <div class="options">
+                <div class="option" onclick="answer('S', 2)">关注细节</div>
+                <div class="option" onclick="answer('N', 2)">关注大局</div>
+            </div>
+        </div>
+
+        <div id="question3" class="question" style="display:none;">
+            <p>你更倾向于：</p>
+            <div class="options">
+                <div class="option" onclick="answer('T', 3)">依赖逻辑</div>
+                <div class="option" onclick="answer('F', 3)">依赖感受</div>
+            </div>
+        </div>
+
+        <div id="question4" class="question" style="display:none;">
+            <p>你更倾向于：</p>
+            <div class="options">
+                <div class="option" onclick="answer('J', 4)">有计划性</div>
+                <div class="option" onclick="answer('P', 4)">随性而为</div>
+            </div>
+        </div>
+
+        <div id="result" class="result">
+            <p>你的MBTI类型是：<span id="mbtiResult"></span></p>
+        </div>
+    </div>
+
+    <script>
+        let answers = ['', '', '', ''];
+
+        function answer(type, questionNumber) {
+            answers[questionNumber - 1] = type;
+            if (questionNumber < 4) {
+                document.getElementById('question' + questionNumber).style.display = 'none';
+                document.getElementById('question' + (questionNumber + 1)).style.display = 'block';
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            let mbtiType = answers.join('');
+            document.getElementById('mbtiResult').textContent = mbtiType;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
