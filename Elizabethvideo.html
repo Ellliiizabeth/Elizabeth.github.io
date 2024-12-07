@@ -1,31 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video From Liziqi</title>
+    <title>Portfolio - 一石二鸟</title>
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 20px;
-            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
         }
-        iframe {
-            border: none;
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h1, h2, h3, h4 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        h1 ruby {
+            font-size: 1.5rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        p {
+            margin: 0.5rem 0;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        ul li {
+            margin: 0.5rem 0;
+        }
+
+        audio {
+            margin-top: 1rem;
+            display: block;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #333;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Highlighted Elements */
+        mark {
+            background-color: #ffd54f;
+            padding: 0 0.2rem;
+        }
+
+        abbr {
+            border-bottom: 1px dotted #999;
+            cursor: help;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Liziqi's new video</h1>
-    <p>Sit back, relax, and enjoy it.</p>
-    <iframe 
-        width="560" 
-        height="315" 
-        src="//player.bilibili.com/player.html?isOutside=true&aid=113473723896295&bvid=BV14UUAYmExC&cid=26736330298&p=1" 
-        title="Liziqi-For Everyone Who Knows My Name" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
+    <header>
+        <h1>Portfolio - AI-Generated Idiom Illustration</h1>
+    </header>
+
+    <main>
+        <!-- Section for the idiom with pinyin and audio -->
+        <section>
+            <h1>
+                <ruby>
+                    一石二鸟
+                    <rt>yī shí èr niǎo</rt>
+                </ruby>
+            </h1>
+            <p>This idiom means "to kill two birds with one stone."</p>
+            <audio controls>
+                <source src="audio/yishierniao.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <!-- AI-generated image showcase -->
+        <section>
+            <h2>AI-Generated Idiom Illustration</h2>
+            <img src="images/yishierniao.jpg" alt="AI-generated illustration of 一石二鸟">
+            <p>Illustration depicting the meaning of the idiom "一石二鸟."</p>
+
+            <!-- Description of the AI generation process -->
+            <h3>How the Image Was Generated</h3>
+            <ul>
+                <li>The idiom "一石二鸟" was input into an AI image generation tool.</li>
+                <li>The AI was prompted with a detailed description of the idiom's meaning and symbolism.</li>
+                <li>Multiple iterations were made to refine the visual representation.</li>
+            </ul>
+        </section>
+
+        <!-- Document-level elements -->
+        <section>
+            <h4>Additional Elements</h4>
+            <p>This webpage uses various document-level elements to enhance its structure and readability:</p>
+            <ul>
+                <li><mark>Highlighted</mark> text for emphasis.</li>
+                <li><em>Italicized</em> text for subtle emphasis.</li>
+                <li><strong>Bold text</strong> for stronger emphasis.</li>
+                <li>Abbreviations like <abbr title="Artificial Intelligence">AI</abbr> for clarity.</li>
+                <li>Ruby text for annotating Chinese characters with <ruby>拼音<rt>pīnyīn</rt></ruby>.</li>
+                <li>Superscript <sup>2</sup> and subscript H<sub>2</sub>O for formatting scientific expressions.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Portfolio Page. Created for educational purposes.</p>
+    </footer>
 </body>
 </html>
