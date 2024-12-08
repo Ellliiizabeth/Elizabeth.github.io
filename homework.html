@@ -74,6 +74,18 @@
             border-radius: 8px;
             margin-top: 1rem;
         }
+        /* Pinyin Above the Character */
+        ruby {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        ruby rt {
+            display: block;
+            margin-bottom: 0.2rem;  /* Space between pinyin and character */
+            font-size: 0.8rem;       /* Smaller font for pinyin */
+        }
 
         /* Video Section Styling */
         .video-container {
@@ -177,7 +189,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Portfolio Page. Created for educational purposes.</p>
+        <p>&copy; 2024 Portfolio Page. Created by mori for educational purposes.</p>
     </footer>
 </body>
 </html>
