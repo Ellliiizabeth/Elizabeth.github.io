@@ -13,11 +13,7 @@
             padding: 0;
             background-color: #f9f9f9;
             color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Full viewport height */
-            text-align: center;
+            text-align: center;  /* Center content horizontally */
         }
 
         header {
@@ -25,37 +21,18 @@
             color: white;
             text-align: center;
             padding: 1.5rem 0;
-            width: 100%;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2rem;
-        }
-
-        main {
-            max-width: 800px;
-            padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: left; /* Align text left in main content */
-        }
-
-        section {
-            margin-bottom: 2rem;
-        }
-
-        h1, h2, h3, h4 {
-            color: #333;
-            margin-bottom: 1rem;
+            font-size: 3rem;  /* Larger font size for the title */
         }
 
         /* Pinyin Above the Character */
         ruby {
             display: inline-block;
             position: relative;
-            text-align: center;
+            font-size: 3rem;  /* Make the Chinese characters bigger */
         }
 
         ruby rt {
@@ -63,8 +40,21 @@
             top: -1rem;  /* Position pinyin above the character */
             left: 50%;
             transform: translateX(-50%);
-            font-size: 1rem;  /* Font size for pinyin */
+            font-size: 1.2rem;  /* Pinyin size */
             margin: 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 2rem;
         }
 
         p {
