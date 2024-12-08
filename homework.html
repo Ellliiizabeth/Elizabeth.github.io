@@ -124,6 +124,31 @@
             cursor: help;
         }
     </style>
+    <style>
+        /* Centering the ruby element and making it bigger */
+        section h1 {
+            text-align: center; /* Horizontally center the content */
+            font-size: 8rem; /* Make the whole title bigger */
+            margin: 0; /* Remove default margin */
+        }
+        
+        ruby {
+                display: inline-block;
+                position: relative;
+                font-size: 2rem; /* Make the ruby (Chinese characters) bigger */
+        }
+        
+        ruby rt {
+            font-size: 1.5rem; /* Pinyin size */
+            margin: 0;
+        }
+        
+        mark {
+            background-color: #CCFFCC; 
+            padding: 0.2rem;
+        }
+</style>
+    
 </head>
 <body>
     <header>
@@ -145,34 +170,6 @@
                 Your browser does not support the audio element.
             </audio>
         </section>
-        <style>
-            /* Centering the ruby element and making it bigger */
-            section h1 {
-                text-align: center; /* Horizontally center the content */
-                font-size: 4rem; /* Make the whole title bigger */
-                margin: 0; /* Remove default margin */
-            }
-        
-            ruby {
-                display: inline-block;
-                position: relative;
-                font-size: 4rem; /* Make the ruby (Chinese characters) bigger */
-            }
-        
-            ruby rt {
-                position: absolute;
-                top: -1rem; /* Position the pinyin above the characters */
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 1.5rem; /* Pinyin size */
-                margin: 0;
-            }
-        
-            mark {
-                background-color: #CCFFCC; 
-                padding: 0.2rem;
-            }
-        </style>
         
         <!-- AI-generated image showcase -->
         <section>
