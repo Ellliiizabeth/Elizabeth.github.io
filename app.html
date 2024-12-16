@@ -50,6 +50,19 @@
             color: black;
             top: 200vh; /* 页面3从屏幕底部再往下开始 */
         }
+
+        /* 隐藏的诗人名字 */
+        #poet-name {
+            display: none;
+            font-size: 22px;
+            margin-top: 20px;
+        }
+
+        #page3 p {
+            cursor: pointer;
+            color: #0066cc;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +76,8 @@
     </div>
     <div class="page" id="page3">
         <h1>飞流直下三千尺，疑是银河落九天。</h1>
+        <p>Do you know who is the poet?</p>
+        <div id="poet-name">诗人是：李白 Libai</div>
     </div>
 
     <script>
@@ -111,6 +126,14 @@
         document.body.addEventListener('touchmove', (e) => {
             e.preventDefault();
         }, { passive: false });
+
+        // 点击事件：显示诗人名字
+        const poetQuestion = document.querySelector('#page3 p');
+        const poetName = document.querySelector('#poet-name');
+
+        poetQuestion.addEventListener('click', () => {
+            poetName.style.display = 'block'; // 显示诗人名字
+        });
     </script>
 </body>
 </html>
