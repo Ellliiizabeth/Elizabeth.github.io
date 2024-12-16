@@ -18,14 +18,15 @@
         }
 
         #app {
-            height: 100%;
+            height: 100vh; /* 保证整个应用占满一屏 */
             width: 100%;
-            display: flex;
-            flex-direction: column;
+            position: relative; /* 使得子元素可以绝对定位 */
             transition: transform 0.3s ease-in-out; /* 使得滑动过渡流畅 */
         }
 
         .page {
+            position: absolute;
+            width: 100%;
             height: 100vh; /* 每个页面都占满整个视口 */
             display: flex;
             justify-content: center;
@@ -33,7 +34,6 @@
             flex-direction: column;
             text-align: center;
             font-size: 24px;
-            width: 100%; /* 保证宽度填满视口 */
         }
 
         #page1 {
@@ -90,7 +90,7 @@
             }
 
             // 更新页面位置，实现滑动切换
-            app.style.transform = `translateY(-${currentPage * 100}vh)`;
+            app.style.transform = `translateY(-${currentPage * 100}vh)`; // 每次滑动100vh，确保全屏切换
         });
     </script>
 </body>
