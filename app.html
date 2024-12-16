@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑动切换页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* 禁止页面滚动条 */
+        }
+
+        #app {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out; /* 使得滑动过渡流畅 */
+        }
+
+        .page {
+            height: 100vh; /* 每个页面都占满整个视口 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            font-size: 24px;
+            width: 100%; /* 保证宽度填满视口 */
+        }
+
+        #page1 {
+            background-color: white;
+            color: black;
+        }
+
+        #page2 {
+            background-color: blue;
+            color: white;
+        }
+
+        #page3 {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="page" id="page1">
+            <h1>标题</h1>
+            <p>往下滑动</p>
+        </div>
+        <div class="page" id="page2">
+            <h1>欢迎光临！</h1>
+        </div>
+        <div class="page" id="page3">
+            <h1>下次再来！</h1>
+        </div>
+    </div>
+
+    <script>
+        let startY = 0; // 记录触摸开始位置
+        let currentPage = 0; // 当前页面索引
+        const app = document.getElementById('app');
+
+        // 监听触摸开始事件
+        app.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY; // 获取触摸开始时的Y坐标
+        });
+
+        // 监听触摸结束事件
+        app.addEventListener('touchend', (e) => {
+            const endY = e.changedTouches[0].clientY; // 获取触摸结束时的Y坐标
+            const distance = startY - endY; // 计算滑动距离
+
+            if (distance > 50 && currentPage < 2) {
+                // 如果滑动超过50px并且当前不是最后一页，切换到下一页
+                currentPage++;
+            } else if (distance < -50 && currentPage > 0) {
+                // 如果滑动小于-50px并且当前不是第一页，切换到上一页
+                currentPage--;
+            }
+
+            // 更新页面位置，实现滑动切换
+            app.style.transform = `translateY(-${currentPage * 100}vh)`;
+        });
+    </script>
+</body>
+</html>
