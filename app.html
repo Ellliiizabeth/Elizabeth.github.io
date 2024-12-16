@@ -12,7 +12,7 @@
         }
 
         body, html {
-            height: 100%; /* 确保 body 和 html 的高度是100% */
+            height: 100%;
             overflow: hidden; /* 禁止页面滚动条 */
         }
 
@@ -71,6 +71,18 @@
 
         const pages = document.querySelectorAll('.page'); // 获取所有页面元素
 
+        // 设置页面高度，确保每个页面都占满整个视口
+        function setFullPageHeight() {
+            const pageHeight = window.innerHeight; // 获取当前视口的高度
+            pages.forEach(page => {
+                page.style.height = `${pageHeight}px`; // 动态设置每个页面的高度
+            });
+        }
+
+        // 调整页面高度，在页面加载时和窗口大小变化时都调用
+        window.addEventListener('resize', setFullPageHeight);
+        setFullPageHeight(); // 初始调用
+
         // 监听触摸开始事件
         document.body.addEventListener('touchstart', (e) => {
             startY = e.touches[0].clientY; // 获取触摸开始时的Y坐标
@@ -94,6 +106,11 @@
                 page.style.transform = `translateY(-${currentPage * 100}vh)`; // 通过 translateY 控制页面滑动
             });
         });
+
+        // 防止页面被拖动时产生默认滚动效果
+        document.body.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        }, { passive: false });
     </script>
 </body>
 </html>
