@@ -12,16 +12,15 @@
         }
 
         body, html {
-            height: 100%;
-            font-family: Arial, sans-serif;
+            height: 100%; /* 确保 body 和 html 的高度是100% */
             overflow: hidden; /* 禁止页面滚动条 */
         }
 
-        /* 每个页面都是独立的，使用 fixed 定位，使其占满整个屏幕 */
+        /* 设置全屏容器 */
         .page {
             position: fixed;
             width: 100%;
-            height: 100vh; /* 每个页面都占满整个视口 */
+            height: 100vh; /* 每个页面都占满整个视口高度 */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,27 +30,30 @@
             transition: transform 0.3s ease-in-out;
         }
 
+        /* 页面1样式 */
         #page1 {
             background-color: white;
             color: black;
             top: 0;
         }
 
+        /* 页面2样式 */
         #page2 {
             background-color: blue;
             color: white;
-            top: 100vh; /* 页面2位于页面1之下 */
+            top: 100vh; /* 页面2从屏幕底部开始 */
         }
 
+        /* 页面3样式 */
         #page3 {
             background-color: white;
             color: black;
-            top: 200vh; /* 页面3位于页面2之下 */
+            top: 200vh; /* 页面3从屏幕底部再往下开始 */
         }
     </style>
 </head>
 <body>
-    <!-- 每个页面单独一个 div，分别展示不同的内容 -->
+    <!-- 每个页面单独放在一个div -->
     <div class="page" id="page1">
         <h1>标题</h1>
         <p>往下滑动</p>
@@ -64,7 +66,7 @@
     </div>
 
     <script>
-        let startY = 0; // 记录触摸开始位置
+        let startY = 0; // 记录触摸开始的位置
         let currentPage = 0; // 当前页面索引
 
         const pages = document.querySelectorAll('.page'); // 获取所有页面元素
@@ -80,14 +82,14 @@
             const distance = startY - endY; // 计算滑动距离
 
             if (distance > 50 && currentPage < 2) {
-                // 如果滑动超过50px并且当前不是最后一页，切换到下一页
+                // 向下滑动，切换到下一页
                 currentPage++;
             } else if (distance < -50 && currentPage > 0) {
-                // 如果滑动小于-50px并且当前不是第一页，切换到上一页
+                // 向上滑动，切换到上一页
                 currentPage--;
             }
 
-            // 根据 currentPage 更新每个页面的位置
+            // 更新页面位置，保证每个页面占满整个屏幕
             pages.forEach((page, index) => {
                 page.style.transform = `translateY(-${currentPage * 100}vh)`; // 通过 translateY 控制页面滑动
             });
