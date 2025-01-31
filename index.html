@@ -22,6 +22,15 @@
             font-size: 24px;
             margin-top: 30px;
         }
+        .content {
+            display: none; /* 默认隐藏所有页面 */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out; /* 添加渐变动画 */
+        }
+        .active {
+            display: block;
+            opacity: 1;
+        }
         .iframe-container {
             display: flex;
             justify-content: center;
@@ -34,7 +43,6 @@
             max-width: 1200px;
             height: 80vh;
             border: none;
-            display: block;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
@@ -59,43 +67,101 @@
             border-radius: 8px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
         }
+        /* 翻页按钮 */
+        .pagination {
+            margin-top: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            background-color: #5C6BC0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #3F51B5;
+        }
+        .page-indicator {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #666;
+        }
     </style>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bmabey/pyLDAvis@3.4.0/pyLDAvis/js/ldavis.v1.0.0.css">
 </head>
 <body>
 
     <h1>ADHD在小红书</h1>
 
-    <!-- 词云分析 -->
-    <h2>词云和情感分析</h2>
-    <img src="wordcloud.png" alt="词云分析图">
-    
-    <!-- LDA 主题聚类 -->
-    <h2>LDA 主题聚类</h2>
-    <div class="iframe-container">
-        <iframe src="LDAresult.html" class="lda-iframe"></iframe>
+    <!-- 第1页：词云和情感分析 -->
+    <div class="content active">
+        <h2>词云和情感分析</h2>
+        <img src="wordcloud.png" alt="词云分析图">
     </div>
-    
-    <!-- 视频展示 -->
-    <h2>制作过程</h2>
-    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=934263350&bvid=BV1hT4y1R7Lo&cid=446753399&p=1" 
-        scrolling="no" 
-        frameborder="no" 
-        allowfullscreen="true" 
-        style="width:80%; height:500px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); border-radius: 8px;">
-    </iframe>
 
-    <!-- 过程阐释 -->
-    <h2>过程阐释</h2>
-    <p>
-        <strong>Step 1：</strong> 需要获取 cookies 以登录需要爬取内容的界面，通过 Selenium 驱动 Firefox，加载事先存好的 JSON 文件，登上小红书，并模拟滑动，加载出 ADHD 的全部搜索结果。之后，按 F12 获取所需内容的 XPath 以精准定位。使用插件可以更直观地看到自己定位是否正确。<br><br>
+    <!-- 第2页：LDA主题聚类 -->
+    <div class="content">
+        <h2>LDA 主题聚类</h2>
+        <div class="iframe-container">
+            <iframe src="LDAresult.html" class="lda-iframe"></iframe>
+        </div>
+    </div>
 
-        <strong>Step 2：</strong> 爬取结果存储在 Excel 文件中，写一个 Python 程序来切词、计算词频，并导入词云工具制作词云。接着进行 LDA 主题分析，得到可视化的 HTML 结果。<br><br>
+    <!-- 第3页：制作过程（B站视频） -->
+    <div class="content">
+        <h2>制作过程</h2>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=934263350&bvid=BV1hT4y1R7Lo&cid=446753399&p=1" 
+            scrolling="no" 
+            frameborder="no" 
+            allowfullscreen="true" 
+            style="width:80%; height:500px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+        </iframe>
+    </div>
 
-        <strong>Step 3：</strong> 将最终结果写入 HTML 页面，并制作展示视频。
-    </p>
+    <!-- 第4页：过程阐释 -->
+    <div class="content">
+        <h2>过程阐释</h2>
+        <p>
+            <strong>Step 1：</strong> 需要获取 cookies 以登录需要爬取内容的界面，通过 Selenium 驱动 Firefox，加载事先存好的 JSON 文件，登上小红书，并模拟滑动，加载出 ADHD 的全部搜索结果。之后，按 F12 获取所需内容的 XPath 以精准定位。<br><br>
+
+            <strong>Step 2：</strong> 爬取结果存储在 Excel 文件中，写一个 Python 程序来切词、计算词频，并导入词云工具制作词云。接着进行 LDA 主题分析，得到可视化的 HTML 结果。<br><br>
+
+            <strong>Step 3：</strong> 将最终结果写入 HTML 页面，并制作展示视频。
+        </p>
+    </div>
+
+    <!-- 翻页按钮 -->
+    <div class="pagination">
+        <button class="btn" onclick="changePage(-1)">上一页</button>
+        <span class="page-indicator">第 <span id="page-num">1</span> 页 / 4</span>
+        <button class="btn" onclick="changePage(1)">下一页</button>
+    </div>
+
+    <script>
+        let currentPage = 0;
+        const pages = document.querySelectorAll(".content");
+        const pageNumDisplay = document.getElementById("page-num");
+
+        function changePage(direction) {
+            pages[currentPage].classList.remove("active"); // 先隐藏当前页面
+            currentPage += direction;
+
+            // 限制页码范围
+            if (currentPage < 0) {
+                currentPage = 0;
+            } else if (currentPage >= pages.length) {
+                currentPage = pages.length - 1;
+            }
+
+            pages[currentPage].classList.add("active"); // 显示新页面
+            pageNumDisplay.textContent = currentPage + 1; // 更新页码指示器
+        }
+    </script>
 
 </body>
 </html>
-
 
