@@ -12,7 +12,7 @@
             padding: 30px;
         }
         h1 {
-            color: #37A2DA;
+            color: #FFCBB3;
         }
         h2 {
             color: #333;
@@ -24,9 +24,9 @@
             width: 100%; 
         }
         .lda-iframe {
-            width: 90vw;  /* 适应屏幕，但留点边距 */
+            width: 96vw;  /* 适应屏幕，但留点边距 */
             max-width: 1200px; /* 最大宽度，防止超大屏幕时太宽 */
-            height: 80vh;  
+            height: 100vh;  
             border: none;
             display: block; /* 让 iframe 作为块级元素，配合 margin 居中 */
         }
@@ -36,7 +36,7 @@
         p {
             max-width: 900px;
             margin: 0 auto;
-            font-size: 18px;
+            font-size: 16px;
         }
         img {
             margin-top: 20px;
@@ -64,8 +64,12 @@
     <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=934263350&bvid=BV1hT4y1R7Lo&cid=446753399&p=1" scrolling="no" frameborder="no" allowfullscreen="true" style="width:80%; height:500px;"></iframe>
 
     <!-- Explanation -->
-    <h2>内容解释</h2>
-    <p>根据爬取结果，得到以上分析，我们在小红书关于ADHD的讨论是非常复杂的。</p>
+    <h2>过程阐释</h2>
+    <p>
+        Step1：首先，需要获取cookies以登录需要爬取内容的界面，通过selenium驱动firefox，加载事先存好的json文件，登上小红书，并模拟滑动，加载出ADHD的全部搜索结果。之后，按F12获取所需内容的Xpath以精准定位。使用插件可以更直观地看到自己定位是否正确。最后，运行程序，确保爬取每一次滑动之后加载出的内容，它们是同样的Xpath但内容不同，这一点要特别注意，如果滑动时间没有设置好，很可能会爬取到重复内容。
+        Step2：爬取结果储存在excel文件中，写一个python程序来切词、计算词频，导入词云工具制作词云。再进行LDA主题分析，得到生成的html。
+        step3：将最终结果写进一个html中，并制作视频。
+    </p>
 
 </body>
 </html>
