@@ -20,6 +20,11 @@
         iframe {
             margin-top: 20px;
             margin-bottom: 20px;
+            border: none;
+        }
+        .lda-iframe {
+            width: 100vw;  /* 让其宽度适应整个屏幕 */
+            height: 80vh;  /* 让其高度占据80%的视口 */
         }
         canvas {
             margin: 20px auto;
@@ -40,16 +45,17 @@
 <body>
 
     <h1>ADHD在小红书</h1>
+    
     <!-- Visualization Analysis -->
     <h2>词云和情感分析</h2>
     <img src="wordcloud.png" alt="词云分析图">
     
     <h2>LDA主题聚类</h2>
-    <iframe src="LDAresult.html"></iframe>
+    <iframe src="LDAresult.html" class="lda-iframe"></iframe>
     
     <!-- Video Embed -->
     <h2>制作过程</h2>
-    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=934263350&bvid=BV1hT4y1R7Lo&cid=446753399&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:80%; height:500px;"></iframe>
+    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=934263350&bvid=BV1hT4y1R7Lo&cid=446753399&p=1" scrolling="no" frameborder="no" allowfullscreen="true" style="width:80%; height:500px;"></iframe>
 
     <!-- Explanation -->
     <h2>内容解释</h2>
@@ -57,3 +63,4 @@
 
 </body>
 </html>
+
