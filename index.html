@@ -17,14 +17,18 @@
         h2 {
             color: #333;
         }
-        iframe {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border: none;
+        .iframe-container {
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中（如果需要） */
+            width: 100%; 
         }
         .lda-iframe {
-            width: 100vw;  /* 让其宽度适应整个屏幕 */
-            height: 80vh;  /* 让其高度占据80%的视口 */
+            width: 90vw;  /* 适应屏幕，但留点边距 */
+            max-width: 1200px; /* 最大宽度，防止超大屏幕时太宽 */
+            height: 80vh;  
+            border: none;
+            display: block; /* 让 iframe 作为块级元素，配合 margin 居中 */
         }
         canvas {
             margin: 20px auto;
@@ -51,7 +55,9 @@
     <img src="wordcloud.png" alt="词云分析图">
     
     <h2>LDA主题聚类</h2>
-    <iframe src="LDAresult.html" class="lda-iframe"></iframe>
+    <div class="iframe-container">
+        <iframe src="LDAresult.html" class="lda-iframe"></iframe>
+    </div>
     
     <!-- Video Embed -->
     <h2>制作过程</h2>
