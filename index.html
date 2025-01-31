@@ -1,3 +1,94 @@
-<h1>
-  hahahahahallooooo! WORLD!
-</h1>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADHD在小红书</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        iframe {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        canvas {
+            margin: 20px auto;
+        }
+        p {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ADHD在小红书</h1>
+
+    <!-- Visualization Analysis -->
+    <h2>数据可视化分析</h2>
+
+    <iframe style="width:80%; height:600px; border:none;">
+        <html>
+        <head>
+            <title>Visualization Results</title>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                window.onload = function() {
+                    var wordFreq = {"ADHD": 97, "（": 19, "）": 18, "adhd": 15, "确诊": 14, "什么": 13, "有": 10, "：": 10, "女性": 9, "，": 8, "成人": 8, "？": 7, "个": 7, "自救": 7, "多动症": 7, "️": 7, "ADHDer": 6, "。": 6, "不是": 6, "…": 6};
+                    var sentimentData = {"Positive": 79, "Neutral": 22, "Negative": 24};
+
+                    var ctx1 = document.getElementById("wordFreqChart").getContext("2d");
+                    new Chart(ctx1, {
+                        type: "bar",
+                        data: {
+                            labels: Object.keys(wordFreq),
+                            datasets: [{
+                                label: "Word Frequency",
+                                data: Object.values(wordFreq),
+                                backgroundColor: "rgba(75, 192, 192, 0.6)"
+                            }]
+                        }
+                    });
+
+                    var ctx2 = document.getElementById("sentimentChart").getContext("2d");
+                    new Chart(ctx2, {
+                        type: "pie",
+                        data: {
+                            labels: Object.keys(sentimentData),
+                            datasets: [{
+                                label: "Sentiment Analysis",
+                                data: Object.values(sentimentData),
+                                backgroundColor: ["#4CAF50", "#FFC107", "#F44336"]
+                            }]
+                        }
+                    });
+                };
+            </script>
+        </head>
+        <body>
+            <h1>Word Frequency</h1>
+            <canvas id="wordFreqChart" width="400" height="200"></canvas>
+            <h1>Sentiment Analysis</h1>
+            <canvas id="sentimentChart" width="400" height="200"></canvas>
+        </body>
+        </html>
+    </iframe>
+
+    <!-- Video Embed -->
+    <h2>视频分析</h2>
+    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=934263350&bvid=BV1hT4y1R7Lo&cid=446753399&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:80%; height:500px;"></iframe>
+
+    <!-- Explanation -->
+    <h2>内容解释</h2>
+    <p>根据爬取结果，得到以上分析，我们在小红书关于ADHD的讨论是非常复杂的。</p>
+
+</body>
+</html>
